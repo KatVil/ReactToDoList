@@ -53,14 +53,10 @@ function App() {
                   onChange={() => handleToggleTask(index)}
                   text={task.text}
                   id="flexCheckDefault"
-                />
-                <span
                   style={
                     task.completed ? { textDecoration: "line-through" } : null
                   }
-                >
-                  {task.text}
-                </span>
+                />
               </li>
             ))}
           </div>
