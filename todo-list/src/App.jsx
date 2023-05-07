@@ -57,6 +57,9 @@ function App() {
                     task.completed ? { textDecoration: "line-through" } : null
                   }
                 />
+                <label className="form-check-label" htmlFor="flexCheckDefault">
+                  {task.text}
+                </label>
               </li>
             ))}
           </div>
