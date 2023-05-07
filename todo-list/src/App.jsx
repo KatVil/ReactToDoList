@@ -2,11 +2,20 @@ import "./App.css";
 import React, { useState } from 'react';
 
 function App() {
+  const [text, setTask] = useState('input task');
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    event.preventDefault()
+
+    const task = {
+      text,
+      id: Date.now()
+    }
+
+    setTask((prev) => [...prev, task])
+    setTask('')
   };
 
   const handleAddTask = () => {
@@ -25,29 +34,37 @@ function App() {
   return (
     <>
       <main className="container my-5">
-      <h1>TO DO LIST</h1>
-      <div>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
-      <button onClick={handleAddTask}>Add task</button>
-      <ul>
-      {tasks.map((task, index) => (
-      <li key={index}>
-      <div className="form-check">          
+        <h1>TO DO LIST</h1>
+        <div>
           <input
-            className="form-check-input"
-            type="checkbox"
-            checked={task.completed} onChange={() => handleToggleTask(index)}
-            value=""
-            id="flexCheckDefault"
+            type="text"
+            value={text}
+            onChange={(event) => setTask(event.target.value)}
+            handleInputChange={handleInputChange}
           />
-          <span style={task.completed ? { textDecoration: "line-through" } : null}>{task.name}</span>
-          <label className="form-check-label" for="flexCheckDefault">
-          </label>
+          <button onClick={handleAddTask}>Add task</button>
+          <div className="form-check">
+            {tasks.map((task, index) => (
+              <li key={index}>
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => handleToggleTask(index)}
+                  text={task.text}
+                  id="flexCheckDefault"
+                />
+                <span
+                  style={
+                    task.completed ? { textDecoration: "line-through" } : null
+                  }
+                >
+                  {task.text}
+                </span>
+              </li>
+            ))}
+          </div>
         </div>
-          </li>
-        ))}
-      </ul>
-      </div>
       </main>
     </>
   );
