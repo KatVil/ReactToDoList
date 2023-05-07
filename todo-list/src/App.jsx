@@ -51,7 +51,7 @@ function App() {
                   type="checkbox"
                   checked={task.completed}
                   onChange={() => handleToggleTask(index)}
-                  text={task.text}
+                  value = {task.text}
                   id="flexCheckDefault"
                   style={
                     task.completed ? { textDecoration: "line-through" } : null
