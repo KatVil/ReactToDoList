@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 function App() {
   const [text, setTask] = useState('input task');
   const [tasks, setTasks] = useState([]);
-  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
     event.preventDefault()
@@ -19,8 +18,8 @@ function App() {
   };
 
   const handleAddTask = () => {
-    setTasks([...tasks, inputValue]);
-    setInputValue("");
+    setTasks([...tasks, text]);
+    setTask("");
   };
 
   const handleToggleTask = (index) => {
