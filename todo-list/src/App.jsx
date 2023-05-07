@@ -18,7 +18,7 @@ function App() {
   };
 
   const handleAddTask = () => {
-    setTasks([...tasks, text]);
+    setTasks(tasks => [...tasks, {text}]);
     setTask("");
   };
 
@@ -38,7 +38,7 @@ function App() {
           <input
             type="text"
             value={text}
-            onChange={(event) => setTask(event.target.value)}
+            onChange={(event) => handleInputChange(event.target.value)}
             handleInputChange={handleInputChange}
           />
           <button onClick={handleAddTask}>Add task</button>
