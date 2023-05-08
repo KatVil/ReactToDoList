@@ -8,9 +8,8 @@ const NewTask = ({task, taskStatus, handleToggleTask, id}) => {
         type="checkbox"
         checked={taskStatus}
         onChange={() => handleToggleTask(id)}
-        style={task.completed ? { textDecoration: "line-through" } : null}
       />
-      <label className="form-check-label" htmlFor="flexCheckDefault">
+      <label className="form-check-label" htmlFor="flexCheckDefault" style={(taskStatus) ? { textDecoration: "line-through" , color:'violet'} : null}>
         {task}
       </label>
     </>
