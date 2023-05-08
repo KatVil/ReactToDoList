@@ -29,7 +29,7 @@ function App() {
             <Form
             handleAddTask={handleAddTask}
             setTask={setTask}
-            task={tasks}            
+            task={task}            
             />
             <Tasks
             tasks={tasks}

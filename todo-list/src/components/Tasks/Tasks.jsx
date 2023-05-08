@@ -4,13 +4,13 @@ import NewTask from "../NewTask/NewTask";
 const Tasks = ({tasks, handleToggleTask}) => {
   return (
     <div className="tasks">
-      {tasks.map((tasks) => (
-        <div className="form-check" key={tasks.id}>
+      {tasks.map((taskes) => (
+        <div className="form-check" key={taskes.id}>
           <li>
             <NewTask
-              task={tasks.task}
-              taskStatus={tasks.taskStatus}
-              id={tasks.id}
+              task={taskes.task}
+              taskStatus={taskes.taskStatus}
+              id={taskes.id}
               handleToggleTask={handleToggleTask}
             />
           </li>

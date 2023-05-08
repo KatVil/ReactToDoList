@@ -5,7 +5,6 @@ const Form = ({setTask, handleAddTask, task}) => {
     <form className="mb-3" onSubmit={handleAddTask}>
     <div className="mb-3">
           <input
-            type="text"
             placeholder="write your task here"
             value={task}
             onChange={(event) => setTask(event.target.value)}
