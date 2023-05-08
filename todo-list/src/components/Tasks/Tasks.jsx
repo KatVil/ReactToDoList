@@ -1,7 +1,7 @@
 import React from 'react'
-import {NewTask} from "./components/NewTask/NewTask";
+import NewTask from "../NewTask/NewTask";
 
-function Tasks({tasks, handleToggleTask}) {
+const Tasks = ({tasks, handleToggleTask}) => {
   return (
     <div className="tasks">
       {tasks.map((tasks) => (

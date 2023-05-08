@@ -1,13 +1,14 @@
 import "./App.css";
 import React, { useState } from 'react';
-import {Tasks} from "./components/Tasks/Tasks";
-import {Form} from "./components/Form/Form";
+import Tasks from "./components/Tasks/Tasks";
+import Form from "./components/Form/Form";
 
 function App() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
 
-  const handleAddTask = () => {
+  const handleAddTask = (event) => {
+    event.preventDefault();
     setTasks(prevState => [...prevState, {task, id: Date.now(), taskStatus: false}]);
     setTask("");
   };
@@ -34,7 +35,7 @@ function App() {
             tasks={tasks}
             handleToggleTask={handleToggleTask}
             />
-            
+
       </main>
     </>
   );

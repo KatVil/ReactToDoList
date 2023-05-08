@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NewTask({task, taskStatus, handleToggleTask, id}){
+const NewTask = ({task, taskStatus, handleToggleTask, id}) => {
   return (
     <>
       <input
@@ -8,7 +8,6 @@ function NewTask({task, taskStatus, handleToggleTask, id}){
         type="checkbox"
         checked={taskStatus}
         onChange={() => handleToggleTask(id)}
-        id="flexCheckDefault"
         style={task.completed ? { textDecoration: "line-through" } : null}
       />
       <label className="form-check-label" htmlFor="flexCheckDefault">
