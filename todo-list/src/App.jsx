@@ -1,68 +1,40 @@
 import "./App.css";
 import React, { useState } from 'react';
+import {Tasks} from "./components/Tasks/Tasks";
+import {Form} from "./components/Form/Form";
 
 function App() {
-  const [text, setTask] = useState('input task');
+  const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
 
-  const handleInputChange = (event) => {
-    event.preventDefault()
-
-    const task = {
-      text,
-      id: Date.now()
-    }
-
-    setTask((prev) => [...prev, task])
-    setTask('')
-  };
-
   const handleAddTask = () => {
-    setTasks(tasks => [...tasks, {text}]);
+    setTasks(prevState => [...prevState, {task, id: Date.now(), taskStatus: false}]);
     setTask("");
   };
 
-  const handleToggleTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks[index] = {
-      ...newTasks[index],
-      completed: !newTasks[index].completed
-    };
+  const handleToggleTask = (id) => {
+    const newTasks = tasks.map(el => {
+      if (el.id === id){
+        el.taskStatus = !el.taskStatus
+      }
+      return{...el}
+    })
     setTasks(newTasks);
   };
   return (
     <>
       <main className="container my-5">
         <h1>TO DO LIST</h1>
-        <div>
-          <input
-            type="text"
-            value={text}
-            onChange={(event) => handleInputChange(event.target.value)}
-            handleInputChange={handleInputChange}
-          />
-          <button onClick={handleAddTask}>Add task</button>
-          <div className="form-check">
-            {tasks.map((task, index) => (
-              <li key={index}>
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  checked={task.completed}
-                  onChange={() => handleToggleTask(index)}
-                  value = {task.text}
-                  id="flexCheckDefault"
-                  style={
-                    task.completed ? { textDecoration: "line-through" } : null
-                  }
-                />
-                <label className="form-check-label" htmlFor="flexCheckDefault">
-                  {task.text}
-                </label>
-              </li>
-            ))}
-          </div>
-        </div>
+            <Form
+            handleAddTask={handleAddTask}
+            setTask={setTask}
+            task={tasks}            
+            />
+            <Tasks
+            tasks={tasks}
+            handleToggleTask={handleToggleTask}
+            />
+            
       </main>
     </>
   );
