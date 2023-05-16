@@ -1,7 +1,7 @@
 import React from 'react'
 import NewTask from "../NewTask/NewTask";
 
-const Tasks = ({tasks, handleToggleTask}) => {
+export const Tasks = ({tasks, handleToggleTask}) => {
   return (
     <div className="tasks">
       {tasks.map((taskes) => (
@@ -19,4 +19,3 @@ const Tasks = ({tasks, handleToggleTask}) => {
     </div>
   );
 }
-export default Tasks
