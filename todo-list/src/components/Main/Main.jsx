@@ -2,10 +2,11 @@ import React from 'react';
 import {useState} from "react";
 import {Form} from "../Form/Form";
 import {Tasks} from "../Tasks/Tasks";
+import {useLocalStorage} from "../../hooks/useLocalStorage";
 
 export const Main = () => {
     const [task, setTask] = useState('');
-    const [tasks, setTasks] = useState([]);  
+    const [tasks, setTasks] = useLocalStorage('tasks', []);  
     const handleAddTask = (event) => {
       event.preventDefault();
       setTasks(prevState => [...prevState, {task, id: Date.now(), taskStatus: false}]);
