@@ -1,24 +1,24 @@
 import React from 'react'
 import NewTask from "../NewTask/NewTask";
 import {useContext} from "react";
-import {GlobalContext} from "../../contexts/globalContext";
+import {globalContext} from "../../context/globalContext";
 
-  export const Tasks = ({tasks, handleToggleTask}) => {
-    const {state: {taskes}} = useContext(GlobalContext)
-    return (
-      <div className="tasks">
-        {tasks.map((taskes) => (
-          <div className="form-check" key={taskes.id}>
-            <li>
-              <NewTask
-                task={taskes.task}
-                taskStatus={taskes.taskStatus}
-                id={taskes.id}
-                handleToggleTask={handleToggleTask}
-              />
-            </li>
+function Tasks() {
+
+  const { state, dispatch} = useContext(globalContext)
+
+  return (
+        <div className="col-sm-10">
+        {state.list.map((post) => (
+          <div key = {post.id}>
+            <NewTask text={post.text} 
+            id={post.id} 
+            status={post.status} 
+            />
           </div>
-        ))}
+        ))
+        }
       </div>
     );
-  }
+}
+export default Tasks;

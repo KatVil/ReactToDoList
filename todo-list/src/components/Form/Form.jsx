@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useState } from "react";
-import { globalContext } from "../../contexts/globalContext";
+import { globalContext } from "../../context/globalContext";
 
 function Form() {
   const { dispatch } = useContext(globalContext);
@@ -14,22 +14,33 @@ function Form() {
         type: "ADD_TASK",
         payload: {
           text,
-          id: Date.now(),
-        },
+          id: Date.now()
+        }
       });
     }
     setText("");
   }
   return (
     <form className="mb-3" onSubmit={handleAddTask}>
-      <div className="mb-3">
+      <div className="input-group input-group-lg">
+        <div className="input-group-prepend" />
         <input
+          type="text"
           placeholder="write your task here"
-          value={task}
-          onChange={(event) => setTask(event.target.value)}
+          value={text}
+          onChange={event => setText(event.target.value)}
+          className="form-control"
+          aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm"
         />
-        <button onClick={handleAddTask}>Add task</button>
       </div>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        onClick={handleAddTask}
+      >
+        Add task
+      </button>
     </form>
   );
 }
