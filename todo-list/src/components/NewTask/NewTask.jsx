@@ -1,8 +1,10 @@
 import React from 'react'
+import {ShowTask} from 
 
-const NewTask = ({task, taskStatus, handleToggleTask, id}) => {
-  return (
-    <>
+function NewTask ({task, taskStatus, handleToggleTask, id}){
+  const [taskEdit, setTaskEdit] = useState(false);
+  return ( 
+      <>
       <input
         className="form-check-input"
         type="checkbox"
